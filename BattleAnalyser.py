@@ -38,8 +38,9 @@ with open('interBD.txt', 'r') as battle:
 
         if lba[1] == '<S':
             AddToDict(lba[0], ul)
-            AddNation(lba[2], es)
-            AddToDict(lba[3], es[lba[2]])
+            if len(lba[2]) > 0:
+                AddNation(lba[2], es)
+                AddToDict(lba[3], es[lba[2]])
         if lba[1] == '<F':
             AddNation(lba[2], ef)
             AddToDict(lba[3], ef[lba[2]])

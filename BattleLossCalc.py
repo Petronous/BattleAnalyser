@@ -23,7 +23,9 @@ costDict = {
 'Heavy Bomber': 120,
 'Artillery': 50,
 'Partisan': 0,
-'Alpine Troops': 50
+'Alpine Troops': 50,
+'Missile Destroyer': 60,
+'Engineers': 40
 }
 
 
@@ -46,6 +48,7 @@ def uProdCost(msg, dict):
         while u[ul] in ['!', '.', ' ', '\n']:
             u = u[:ul]
             ul -= 1
+        print(u, costDict[u], costDict[u]*n)
         sum += costDict[u]*n
 
     nb.append(str(sum) +'\n\n')
@@ -89,8 +92,9 @@ with open('interBD.txt', 'r') as battle:
 
         if lba[1] == '<S':
             AddToDict(lba[0], ul)
-            AddNation(lba[2], es)
-            AddToDict(lba[3], es[lba[2]])
+            if len(lba[2]) > 0:
+                AddNation(lba[2], es)
+                AddToDict(lba[3], es[lba[2]])
             if 'Cruise Missile' in lba[3]:
                 AddNation(lba[2], ef)
                 AddToDict(lba[3], ef[lba[2]])
@@ -105,7 +109,7 @@ with open('interBD.txt', 'r') as battle:
                 AddNation(lba[2], uf)
                 AddToDict(lba[0], uf[lba[2]])
         if lba[1] == '>F':
-            AddToDict(lba[3], uf)
+            AddToDict(lba[0], uf)
 
     sum = 0
     ex, s = uProdCost("Your fails", uf)

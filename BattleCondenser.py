@@ -24,6 +24,8 @@ with open('cleanBD.txt', 'r') as battle:
                 uType += wo + ' '
             elif ru == 1:
                 if wo == 'the': ru = 2
+                if wo in ['along', 'when']:
+                    break
             elif ru == 2:
                 if wo == 'pathetic': ru = 1; continue
                 eNation += wo + ' '

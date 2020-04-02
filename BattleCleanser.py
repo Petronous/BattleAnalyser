@@ -4,10 +4,14 @@ with open('BD.txt', 'r') as battle:
 
     for a,ba in enumerate(battle):
         lba = ba.split()[:]
-        if lba is not [] and lba[0][0] == '(': lba = lba[3:]
+        if a == 0:
+            print(lba is not [])
+            print(lba[0])
+        if lba is not [] and '(' in lba[0]: lba = lba[3:]
         print(lba)
         if 'became' in lba: continue
         if 'conquer' in lba: continue
+        if 'Conquer' in lba: continue
         if 'upgrade' in lba: continue
         if 'people' in lba: continue
         if 'sell' in lba: continue
@@ -26,7 +30,24 @@ with open('BD.txt', 'r') as battle:
         if 'building' in lba: continue
         if 'Can\'t' in lba: continue
         if 'can\'t' in lba: continue
-        if len(lba) > 0 and lba[0] == '.': continue
+        if 'building' in lba: continue
+        if 'grows' in lba: continue
+        if 'needs' in lba: continue
+        if 'controls' in lba: continue
+        if 'grow' in lba: continue
+        if 'near' in lba: continue
+        if 'saw' in lba: continue
+        if 'Celebrations' in lba: continue
+        if 'worklist' in lba: continue
+        if 'logged' in lba: continue
+        if 'homecity' in lba: continue
+        if 'conquered' in lba: continue
+        if 'liberated' in lba: continue
+        if 'sabotaged' in lba: continue
+        if len(lba) > 0:
+            if lba[0][0] == '{': continue
+            if lba[0] == '.': continue
+            if ':' in lba[0]: continue
 
         nb.append(' '.join(lba) + '\n')
 
